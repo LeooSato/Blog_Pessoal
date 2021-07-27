@@ -33,13 +33,13 @@ public class postagem {
     }
 
     @NotNull
-    @Size(min = 10, max = 500)
+    @Size(min = 10, max = 500,message = "Texto com tamanho errado tente entre 10 a 500")
     public String getTitulo() {
         return Titulo;
     }
 
     @NotNull
-    @Size(min = 2, max = 500)
+    @Size(min = 10, max = 500, message = "Texto com tamanho errado tente entre 10 a 500")
     public String getTexto() {
         return Texto;
     }
