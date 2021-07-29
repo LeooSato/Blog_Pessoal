@@ -1,15 +1,12 @@
 package org.generation.BlogPessoal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 
 @Entity
@@ -19,6 +16,17 @@ public class postagem {
     private String Titulo;
     private String Texto;
     private Date date = new java.sql.Date(System.currentTimeMillis());
+    @ManyToOne
+    @JsonIgnoreProperties("postagem")
+    private Tema tema;
+
+    public Tema getTema() {
+        return tema;
+    }
+
+    public void setTema(Tema tema) {
+        this.tema = tema;
+    }
 
 
     @Temporal(TemporalType.TIMESTAMP)
