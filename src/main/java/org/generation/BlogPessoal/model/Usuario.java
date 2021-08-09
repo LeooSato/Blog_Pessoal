@@ -1,6 +1,9 @@
 package org.generation.BlogPessoal.model;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -14,14 +17,29 @@ public class Usuario {
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
 	private long id;
+
 	@NotNull
 	@Size( min = 2, max = 100)
 	private String nome;
+
 	@NotNull(message = "O Usuário é obrigatório")
 	private String usuario;
+
 	@NotNull(message = "A senha é obrigatória")
 	@Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres")
 	private String senha;
+	@NotNull(message = "A idade é obrigatória")
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDate dataNascimento;
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -65,4 +83,5 @@ public class Usuario {
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
+
 }
