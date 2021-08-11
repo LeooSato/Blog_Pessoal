@@ -21,9 +21,10 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
-	public Optional<Usuario>  cadastrarUsuario( Usuario usuario) {
-		if(usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
+
+	public Usuario cadastrarUsuario(Usuario usuario) {
+
+		if (usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
 			throw new ResponseStatusException(
 					HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 
@@ -38,7 +39,7 @@ public class UsuarioService {
 		String senhaEncoder = encoder.encode(usuario.getSenha());
 		usuario.setSenha(senhaEncoder);
 
-		return Optional.of(usuarioRepository.save(usuario));
+		return usuarioRepository.save(usuario);
 	}
 
 	public Optional<Usuario> atualizarUsuario(Usuario usuario){
