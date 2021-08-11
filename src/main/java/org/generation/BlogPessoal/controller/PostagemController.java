@@ -2,7 +2,7 @@ package org.generation.BlogPessoal.controller;
 
 import java.util.List;
 
-import org.generation.BlogPessoal.Repository.PostagemRepository;
+import org.generation.BlogPessoal.Repository.postagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ import org.generation.BlogPessoal.model.Postagem;
 public class PostagemController {
 	
 	@Autowired
-	private PostagemRepository repository;
+	private postagemRepository repository;
 	
 	// essa anotação/metodo retorna tudo que tem no banco de dados por isso é o findAll
 	@GetMapping 

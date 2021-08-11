@@ -32,6 +32,16 @@ public class Usuario {
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataNascimento;
 
+	public Usuario(long id, String nome, String usuario, String senha, LocalDate dataNascimento) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.dataNascimento = dataNascimento;
+	}
+
+	public Usuario() {	}
+
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
